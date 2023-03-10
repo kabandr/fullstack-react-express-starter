@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export interface IUser {
   email: string;
@@ -17,16 +17,16 @@ const UserSchema = new mongoose.Schema<IUserModel>(
     password: { type: String, required: true },
     twoFactorSecret: { type: String },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 UserSchema.methods.comparePassword = async function (
-  candidatePassword: string
+  candidatePassword: string,
 ): Promise<boolean> {
   const user = this as IUserModel;
   return user.password === candidatePassword;
 };
 
-const User = mongoose.model<IUserModel>("User", UserSchema);
+const User = mongoose.model<IUserModel>('User', UserSchema);
 
 export default User;

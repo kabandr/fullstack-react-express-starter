@@ -1,4 +1,4 @@
-name: Build
+name: Lint
 
 on:
   push:
@@ -7,9 +7,9 @@ on:
   pull_request:
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/prepare
-      - run: npm run build
+      - run: npm run lint

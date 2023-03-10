@@ -5,8 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "pnpm run lint -- --fix",
+    "lint": "eslint . --ext .ts,.js",
+    "lint:fix": "pnpm run lint . --fix",
     "format": "prettier --write .",
     "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "dev": "ts-node-dev src/index.ts",
@@ -15,7 +15,10 @@
     "start": "tsc & node ."
   },
   "lint-staged": {
-    "**/*.{js,jsx,json}": ["eslint . --fix", "prettier --write ."]
+    "**/*.{js,jsx,json}": [
+      "eslint . --fix",
+      "prettier --write ."
+    ]
   },
   "husky": {
     "hooks": {
